@@ -41,14 +41,21 @@ public class TestConfig implements CommandLineRunner {
 		Category ca2 = new Category(null, "Books");
 		Category ca3 = new Category(null, "Computers");
 		
-		
 		Product p1 = new Product(null, "DVD Player", "A DVD player to watch movies and shows", 205.6, "");
 		Product p2 = new Product(null, "Smart TV", "A TV to complement the DVD Player", 1709.4, "");
 		Product p3 = new Product(null, "PC Gamer", "A PC to run the new gen games", 3450.20, "");
 		Product p4 = new Product(null, "The C++ Programming Language", "The official book to learn C++", 458.3, "");
-		Product p5 = new Product(null, "Fuerrilha Cibernética", "A information security book to learn advanced hacking techniques", 98.70, "");
+		Product p5 = new Product(null, "Guerrilha Cibernética", "A information security book to learn advanced hacking techniques", 98.70, "");
 		
 		categoryRepository.saveAll(Arrays.asList(ca1, ca2, ca3));
+		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
+		
+		p1.getCategories().add(ca1);
+		p2.getCategories().add(ca1); p2.getCategories().add(ca3);
+		p3.getCategories().add(ca3);
+		p4.getCategories().add(ca2);
+		p5.getCategories().add(ca2);
+		
 		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 		
 		User u1 = new User(null, "Maria da Silva", "maria@gmail.com", "98888888", "password");
